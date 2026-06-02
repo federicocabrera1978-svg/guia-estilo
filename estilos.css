@@ -1,0 +1,255 @@
+/* ============================================================================
+   ESTILOS.CSS — Guía de estilo (Ejercicio 3 · TP2 PPI)
+   Archivo CSS separado del HTML, como pide la consigna.
+   Autor: Federico Cabrera
+   ============================================================================ */
+
+/* -------- Variables de color (la paleta de la guía) -------- */
+:root {
+  --tinta: #1d1b2e;   /* texto y títulos      */
+  --vino:  #7c3048;   /* color secundario     */
+  --coral: #e36a5a;   /* color primario       */
+  --oro:   #d8a657;   /* color de acento      */
+  --crema: #f6f1e9;   /* fondo                */
+  --blanco:#ffffff;
+
+  /* Sombras 3D de los botones (versión oscura de cada color) */
+  --coral-3d: #b14a3c;
+  --vino-3d:  #561e30;
+  --oro-3d:   #a87c34;
+}
+
+/* -------- Base -------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  color: var(--tinta);
+  background:
+    radial-gradient(circle at 0% 0%, #fbe9d8 0%, transparent 40%),
+    radial-gradient(circle at 100% 0%, #f2dde2 0%, transparent 35%),
+    var(--crema);
+  line-height: 1.6;
+}
+
+h1, h2 { font-family: 'Fraunces', serif; font-weight: 600; }
+
+/* -------- Encabezado -------- */
+.cabecera {
+  text-align: center;
+  padding: 4rem 1.5rem 2.5rem;
+}
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: .8rem;
+  color: var(--vino);
+  margin: 0 0 .5rem;
+}
+.cabecera h1 { font-size: 3rem; margin: 0; color: var(--tinta); }
+.subtitulo { max-width: 540px; margin: 1rem auto 0; color: #5a5566; }
+
+/* -------- Contenedor de contenido -------- */
+.contenido {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* Cada bloque temático en una tarjeta */
+.bloque {
+  background: var(--blanco);
+  border: 1px solid #ece3d6;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 10px 30px rgba(29, 27, 46, .06);
+}
+.bloque h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: var(--vino);
+  border-bottom: 2px solid var(--crema);
+  padding-bottom: .6rem;
+}
+
+/* ============================================================================
+   PALETA DE COLORES
+   ============================================================================ */
+.paleta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.muestra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: .85rem;
+}
+.muestra small { color: #8a8499; }
+.chip {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  margin-bottom: .5rem;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+.chip-tinta { background: var(--tinta); }
+.chip-vino  { background: var(--vino);  }
+.chip-coral { background: var(--coral); }
+.chip-oro   { background: var(--oro);   }
+.chip-crema { background: var(--crema); }
+
+/* ============================================================================
+   TIPOGRAFÍA
+   ============================================================================ */
+.tipo-muestra { margin-bottom: 1.25rem; }
+.tipo-titulo {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: .75rem;
+  color: var(--oro);
+  margin: 0 0 .25rem;
+}
+.muestra-serif { font-family: 'Fraunces', serif; font-size: 1.7rem; margin: 0; }
+.muestra-sans  { font-family: 'Jost', sans-serif; font-size: 1.05rem; margin: 0; }
+
+/* ============================================================================
+   ACORDEÓN  (sin JavaScript: usa <details>/<summary>)
+   ============================================================================ */
+.acordeon {
+  border: 1px solid #ece3d6;
+  border-radius: 12px;
+  margin-bottom: .75rem;
+  overflow: hidden;
+  background: #fdfbf7;
+}
+/* El resumen es la "tapa" clickeable del acordeón */
+.acordeon summary {
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
+  list-style: none;            /* oculta el triángulo por defecto */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.acordeon summary::-webkit-details-marker { display: none; } /* idem en Safari */
+
+/* Flecha propia que rota al abrir */
+.acordeon summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  color: var(--coral);
+  transition: transform .25s ease;
+}
+.acordeon[open] summary::after { transform: rotate(45deg); } /* el "+" se vuelve "x" */
+
+.acordeon-cuerpo {
+  padding: 0 1.25rem 1.1rem;
+  color: #5a5566;
+}
+
+/* ============================================================================
+   FORMULARIO — BORDE DE FOCO
+   El campo enfocado se resalta con un borde de color y un halo suave.
+   ============================================================================ */
+.form-demo { display: flex; flex-direction: column; }
+.ayuda { color: #8a8499; margin-top: 0; }
+
+.form-demo label {
+  font-weight: 500;
+  margin: .75rem 0 .35rem;
+}
+.form-demo input,
+.form-demo textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: .7rem .9rem;
+  border: 2px solid #e0d8ca;     /* borde normal */
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+/* >>> Borde resaltado cuando el campo tiene el foco <<< */
+.form-demo input:focus,
+.form-demo textarea:focus {
+  outline: none;                  /* quitamos el outline gris por defecto */
+  border-color: var(--coral);     /* borde resaltado */
+  box-shadow: 0 0 0 4px rgba(227, 106, 90, .22);  /* halo suave */
+}
+
+/* ============================================================================
+   BOTONES 3D
+   Relieve con una sombra inferior; al presionar (:active) se "hunden".
+   ============================================================================ */
+.botonera { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.btn3d {
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: .8rem 1.6rem;
+  border-radius: 12px;
+  cursor: pointer;
+  /* La animación del "rebote" al apretar */
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+/* Color + sombra 3D de cada variante */
+.btn3d-coral { background: var(--coral); box-shadow: 0 6px 0 var(--coral-3d); }
+.btn3d-vino  { background: var(--vino);  box-shadow: 0 6px 0 var(--vino-3d);  }
+.btn3d-oro   { background: var(--oro);   box-shadow: 0 6px 0 var(--oro-3d);   }
+
+/* Al apretar: baja 4px y la sombra se achica => sensación de hundirse */
+.btn3d:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0,0,0,.25);
+}
+
+/* ============================================================================
+   ENLACES ANIMADOS  (cambian de color con transición + subrayado que crece)
+   ============================================================================ */
+.parrafo-enlaces { font-size: 1.1rem; }
+
+.enlace-animado {
+  position: relative;
+  color: var(--vino);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .3s ease;     /* la transición del color */
+}
+/* Subrayado animado: una línea que crece de izquierda a derecha */
+.enlace-animado::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--coral);
+  transition: width .3s ease;
+}
+.enlace-animado:hover {
+  color: var(--coral);            /* cambio de color al pasar el mouse */
+}
+.enlace-animado:hover::after {
+  width: 100%;                    /* el subrayado se completa */
+}
+
+/* -------- Pie -------- */
+.pie {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: #8a8499;
+  font-size: .9rem;
+}
+
+/* -------- Responsivo simple -------- */
+@media (max-width: 520px) {
+  .cabecera h1 { font-size: 2.2rem; }
+  .bloque { padding: 1.5rem; }
+}

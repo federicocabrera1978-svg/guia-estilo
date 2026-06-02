@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  EJERCICIO 3 — GUÍA DE ESTILO (estética por sobre funcionalidad)
+  Práctica Profesional I · TP2 (Maquetado estático)
+  Tecnologías: HTML5 + CSS puro  (los estilos van en el archivo "estilos.css")
+  Autor: Federico Cabrera
+  ----------------------------------------------------------------------------
+  Elementos pedidos por la consigna (todos sin JavaScript):
+  - Paleta de colores ........... sección "Paleta"
+  - Tipografía .................. sección "Tipografía"
+  - Acordeón de textos .......... sección "Acordeón" (con <details>/<summary>)
+  - Borde de foco en formulario . sección "Formulario" (input:focus en el CSS)
+  - Botones 3D .................. sección "Botones"
+  - Enlaces animados (cambian de color) ... sección "Enlaces"
+  ============================================================================
+-->
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de estilo · Portafolio PPI</title>
+
+  <!-- Tipografías de la guía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- IMPORTANTE: el CSS va en un archivo aparte, como pide la consigna -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="cabecera">
+    <p class="kicker">Sistema de diseño</p>
+    <h1>Guía de estilo</h1>
+    <p class="subtitulo">
+      La identidad visual que unifica el portafolio: colores, tipografía
+      y componentes con foco en la estética.
+    </p>
+  </header>
+
+  <main class="contenido">
+
+    <!-- ====================== PALETA DE COLORES ====================== -->
+    <section class="bloque">
+      <h2>Paleta de colores</h2>
+      <div class="paleta">
+        <!-- Cada muestra usa una variable CSS definida en estilos.css -->
+        <div class="muestra">
+          <span class="chip chip-tinta"></span>
+          <strong>Tinta</strong><small>#1d1b2e</small>
+        </div>
+        <div class="muestra">
+          <span class="chip chip-vino"></span>
+          <strong>Vino</strong><small>#7c3048</small>
+        </div>
+        <div class="muestra">
+          <span class="chip chip-coral"></span>
+          <strong>Coral</strong><small>#e36a5a</small>
+        </div>
+        <div class="muestra">
+          <span class="chip chip-oro"></span>
+          <strong>Oro</strong><small>#d8a657</small>
+        </div>
+        <div class="muestra">
+          <span class="chip chip-crema"></span>
+          <strong>Crema</strong><small>#f6f1e9</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== TIPOGRAFÍA ====================== -->
+    <section class="bloque">
+      <h2>Tipografía</h2>
+      <div class="tipo-muestra">
+        <p class="tipo-titulo">Fraunces — Títulos</p>
+        <p class="muestra-serif">Aa Bb Cc · La belleza está en el detalle</p>
+      </div>
+      <div class="tipo-muestra">
+        <p class="tipo-titulo">Jost — Cuerpo de texto</p>
+        <p class="muestra-sans">
+          Aa Bb Cc · El texto largo se lee cómodo en esta tipografía sans serif,
+          de trazos limpios y geométricos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================== ACORDEÓN DE TEXTOS ====================== -->
+    <!--
+      Acordeón hecho con <details>/<summary>: es HTML nativo, abre y cierra
+      sin JavaScript. El estilo (flecha, transición) está en estilos.css.
+    -->
+    <section class="bloque">
+      <h2>Acordeón de textos</h2>
+
+      <details class="acordeon" open>
+        <summary>¿Qué es esta guía de estilo?</summary>
+        <div class="acordeon-cuerpo">
+          Es el documento que define cómo se ve y se siente el portafolio:
+          qué colores usar, qué tipografías y cómo se comportan los componentes.
+        </div>
+      </details>
+
+      <details class="acordeon">
+        <summary>¿Por qué priorizar la estética?</summary>
+        <div class="acordeon-cuerpo">
+          Porque una identidad coherente transmite profesionalismo. Este ejercicio
+          busca, justamente, la prolijidad visual por sobre la funcionalidad.
+        </div>
+      </details>
+
+      <details class="acordeon">
+        <summary>¿Se puede reutilizar?</summary>
+        <div class="acordeon-cuerpo">
+          Sí. Las variables de color y la escala tipográfica se copian a cualquier
+          proyecto para mantener una imagen consistente.
+        </div>
+      </details>
+    </section>
+
+    <!-- ====================== FORMULARIO (borde de foco) ====================== -->
+    <!--
+      El requisito es resaltar con un borde el campo que tiene el foco.
+      Eso se logra con la regla  input:focus / textarea:focus  en el CSS.
+    -->
+    <section class="bloque">
+      <h2>Campos de formulario</h2>
+      <p class="ayuda">Hacé clic en un campo para ver el borde de foco resaltado.</p>
+      <form class="form-demo">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" placeholder="Escribí acá…">
+
+        <label for="comentario">Comentario</label>
+        <textarea id="comentario" rows="3" placeholder="Probá el foco en este campo…"></textarea>
+      </form>
+    </section>
+
+    <!-- ====================== BOTONES 3D ====================== -->
+    <!--
+      Botones con efecto 3D: tienen una "sombra" inferior que simula relieve,
+      y al presionarlos (:active) se hunden. Todo el efecto está en el CSS.
+    -->
+    <section class="bloque">
+      <h2>Botones 3D</h2>
+      <div class="botonera">
+        <button class="btn3d btn3d-coral">Primario</button>
+        <button class="btn3d btn3d-vino">Secundario</button>
+        <button class="btn3d btn3d-oro">Acento</button>
+      </div>
+    </section>
+
+    <!-- ====================== ENLACES ANIMADOS ====================== -->
+    <!--
+      Enlaces que animan el cambio de color (y un subrayado que crece) al pasar
+      el mouse. La animación está dada por transition en el CSS.
+    -->
+    <section class="bloque">
+      <h2>Enlaces animados</h2>
+      <p class="parrafo-enlaces">
+        Pasá el mouse por estos enlaces para ver el
+        <a class="enlace-animado" href="#">cambio de color</a>,
+        el <a class="enlace-animado" href="#">subrayado que crece</a>
+        y la <a class="enlace-animado" href="#">transición suave</a>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    Guía de estilo · Portafolio Práctica Profesional I · Federico Cabrera
+  </footer>
+
+</body>
+</html>
